@@ -130,19 +130,18 @@ void load_shaders(){
 	pprog = new glpp::program();
 
 	// Load shaders
-	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, {"position.vert"}));
-	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, {"phong.hsh", "phong.vert"}));
-	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, {"noise.vert"}));
-	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, {"main.vert"}));
-	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, {"wave.vert"}));
+	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, {"effects/position.vert"}));
+	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, {"effects/phong.hsh", "effects/phong.vert"}));
+	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, {"effects/noise.vert"}));
+	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, {"effects/main.vert"}));
+	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, {"effects/wave.vert"}));
 
-	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::FRAGMENT, {"phong.hsh", "phong.frag"}));
-	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::FRAGMENT, {"interleave.frag"}));
-	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::FRAGMENT, {"main.frag"}));
+	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::FRAGMENT, {"effects/phong.hsh", "effects/phong.frag"}));
+	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::FRAGMENT, {"effects/interleaved.frag"}));
+	pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::FRAGMENT, {"effects/main.frag"}));
 	pprog->build();
 
 	std::cout << pprog->info_log() << std::endl;
-	GL_TEXTURE0;
 
 }
 
@@ -210,7 +209,7 @@ void keyb_func(unsigned char key, int x, int y) {
 	}
 }
 int main(int argv, char ** argc) {
-	try {
+
 		glutInit(&argv, argc);
 		glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 		//glutInitContextVersion(3, 3);
@@ -242,9 +241,7 @@ int main(int argv, char ** argc) {
 		update_prespective ();
 		glEnable(GL_CULL_FACE);
 		glutMainLoop();
-	} catch(std::exception & e) {
-		std::cout << "Exception: " << e.what() << std::endl;
-	}
+
 
 	return 0;
 }
