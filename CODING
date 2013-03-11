@@ -1,0 +1,10 @@
+
+
+1. Coding style 
+----------------------------------------------------------------------------
+
+* All classes and functions are lower case splited by underscore.
+
+* If a function returns a non-parameter(property) it is not suffixed with set/get
+* If a functions controls a property it must be suffixed with set/get.
+* Functions returning a boolean state should be prefixed with  is_...()

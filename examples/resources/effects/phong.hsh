@@ -1,0 +1,25 @@
+#version 420
+#define MAX_LIGHTS 15
+
+struct light_t{
+	vec3 position;
+	vec4 diffuse;
+	vec4 specular;
+	float const_att_factor;	//Constant attenuation factor
+	float quad_att_factor;	//Quadratic attenuation factor
+	float lin_att_factor;	//Linear attenuation factor
+};
+
+struct material_t {
+	vec4 emission;
+	vec4 ambient;
+	vec4 diffuse;
+	vec4 specular;
+	float shininess;
+};
+
+uniform material_t mat;
+uniform int lights;
+uniform light_t light[MAX_LIGHTS];
+uniform vec4 ambient;
+
