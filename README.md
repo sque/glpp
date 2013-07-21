@@ -16,39 +16,41 @@ Comparison of using OpenGL C API and GL++
 ### Creating a program and loading some shader files
 
 OpenGL C API
+```C
+// Prototype of a user function to load shader from file
+int loadshader(char * filename, GLchar** ShaderSource, unsigned long* len);
 
-    // Prototype of a user function to load shader from file
-    int loadshader(char * filename, GLchar** ShaderSource, unsigned long* len);
+GLuint vertexShader, fragmentShader, ProgramObject;
+GLchar* shaderSource;
+int shaderSourceLen;
+    
+vertexShaderObject = glCreateShader(GL_VERTEX_SHADER);
+loadshader("shaderfile.vert", &shaderSource, &shaderSourceLen)
+glShaderSource(vertexShader, 1, &shaderSource, &shaderSourceLen)
+glCompileShader(vertexShader)
 
-    GLuint vertexShader, fragmentShader, ProgramObject;
-    GLchar* shaderSource;
-    int shaderSourceLen;
-    
-    vertexShaderObject = glCreateShader(GL_VERTEX_SHADER);
-    loadshader("shaderfile.vert", &shaderSource, &shaderSourceLen)
-    glShaderSource(vertexShader, 1, &shaderSource, &shaderSourceLen)
-    glCompileShader(vertexShader)
-    
-    fragmentShaderObject = glCreateShader(GL_FRAGMENT_SHADER);
-    loadshader("shaderfile.frag", &shaderSource, &shaderSourceLen)
-    glShaderSource(vertexShader, 1, &shaderSource, &shaderSourceLen)
-    glCompileShader(vertexShader)
-    
-    ProgramObject = glCreateProgram();
-    glAttachShader(ProgramObject, vertexShaderObject);
-    glAttachShader(ProgramObject, fragmentShaderObject);
-    
-    glLinkProgram(ProgramObject);
+fragmentShaderObject = glCreateShader(GL_FRAGMENT_SHADER);
+loadshader("shaderfile.frag", &shaderSource, &shaderSourceLen)
+glShaderSource(vertexShader, 1, &shaderSource, &shaderSourceLen)
+glCompileShader(vertexShader)
 
+ProgramObject = glCreateProgram();
+glAttachShader(ProgramObject, vertexShaderObject);
+glAttachShader(ProgramObject, fragmentShaderObject);
+
+glLinkProgram(ProgramObject);
+```
 Same on GL++
 
-    glpp::shared_program_t pprog;
+```cpp
+glpp::shared_program_t pprog;
 
-    pprog = new glpp::program();
-    pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, "shaderfile.vert"));
-    pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::FRAGMENT, "shaderfile.frag"));
-    pprog->build();
-    pprog->use();
+pprog = new glpp::program();
+pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::VERTEX, "shaderfile.vert"));
+pprog->attach_shader(glpp::open_shader_file(glpp::shader_type::FRAGMENT, "shaderfile.frag"));
+pprog->build();
+pprog->use();
+```
 
 Build
 =====

@@ -33,7 +33,7 @@ namespace glpp{
 	//! C++11 implementation of noncopyable pattern
 	struct noncopyable {
 		noncopyable(){}
-		~noncopyable(){	}
+		~noncopyable(){}
 
 		noncopyable(noncopyable &) = delete;
 		noncopyable& operator=(noncopyable &) = delete;
