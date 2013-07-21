@@ -6,7 +6,7 @@ OpenGL C++ Wrapper provides a C++ interface for the OpenGL API. The wrapper trie
 The major keypoints of GL++ API are:
 * Do not introduce new semantics.
 * Do not hide steps, by creating all-in-one functions.
-* Use same names with OpenGL API as much as possible to avoid confusion.
+* Try to use common names with OpenGL C API to avoid confusion.
 * Use C++ language to represent OOP semantics (e.g. [OpenGL objects](http://www.opengl.org/wiki/OpenGL_Object) )
 
 
@@ -67,10 +67,13 @@ To build the examples you will need also:
 * [Assimp](http://assimp.sourceforge.net)
 
 It is preferred to build project in a sub-folder than doing it directly in tree.
-    mkdir build
-    cd build
-    cmake ..
-    make
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
 
 Documentation
 =============
