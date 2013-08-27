@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Glpp by sque</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/sque/glpp">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/sque/glpp/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/sque/glpp/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Glpp</h1>
+          <p>OpenGL C++ Wrapper</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/sque">sque</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="gl-glpp" class="anchor" href="#gl-glpp"><span class="octicon octicon-link"></span></a>GL++ (glpp)</h1>
+
+<p>OpenGL C++ Wrapper provides a C++ interface for the OpenGL API. The wrapper tries to expose all the logical objects of OpenGL standard to C++ native objects. This is not a graphics library, thus you will not find any assets manipulation or math functionality. However the library is designed to be easily coupled with an external math library like <a href="http://glm.g-truc.net/">glm</a> or an assets manipulation library like <a href="http://assimp.sourceforge.net/">assimp</a>.</p>
+
+<p>The major keypoints of GL++ API are:</p>
+
+<ul>
+<li>Do not introduce new semantics.</li>
+<li>Do not hide steps, by creating all-in-one functions.</li>
+<li>Try to use common names with OpenGL C API to avoid confusion.</li>
+<li>Use C++ language to represent OOP semantics (e.g. <a href="http://www.opengl.org/wiki/OpenGL_Object">OpenGL objects</a> )</li>
+</ul><h2>
+<a name="comparison-of-using-opengl-c-api-and-gl" class="anchor" href="#comparison-of-using-opengl-c-api-and-gl"><span class="octicon octicon-link"></span></a>Comparison of using OpenGL C API and GL++</h2>
+
+<h3>
+<a name="creating-a-program-and-loading-some-shader-files" class="anchor" href="#creating-a-program-and-loading-some-shader-files"><span class="octicon octicon-link"></span></a>Creating a program and loading some shader files</h3>
+
+<p>OpenGL C API</p>
+
+<div class="highlight"><pre><span class="c1">// Prototype of a user function to load shader from file</span>
+<span class="kt">int</span> <span class="nf">loadshader</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">filename</span><span class="p">,</span> <span class="n">GLchar</span><span class="o">**</span> <span class="n">ShaderSource</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="o">*</span> <span class="n">len</span><span class="p">);</span>
+
+<span class="n">GLuint</span> <span class="n">vertexShader</span><span class="p">,</span> <span class="n">fragmentShader</span><span class="p">,</span> <span class="n">ProgramObject</span><span class="p">;</span>
+<span class="n">GLchar</span><span class="o">*</span> <span class="n">shaderSource</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">shaderSourceLen</span><span class="p">;</span>
+
+<span class="n">vertexShaderObject</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_VERTEX_SHADER</span><span class="p">);</span>
+<span class="n">loadshader</span><span class="p">(</span><span class="s">"shaderfile.vert"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shaderSource</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shaderSourceLen</span><span class="p">)</span>
+<span class="n">glShaderSource</span><span class="p">(</span><span class="n">vertexShader</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shaderSource</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shaderSourceLen</span><span class="p">)</span>
+<span class="n">glCompileShader</span><span class="p">(</span><span class="n">vertexShader</span><span class="p">)</span>
+
+<span class="n">fragmentShaderObject</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_FRAGMENT_SHADER</span><span class="p">);</span>
+<span class="n">loadshader</span><span class="p">(</span><span class="s">"shaderfile.frag"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shaderSource</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shaderSourceLen</span><span class="p">)</span>
+<span class="n">glShaderSource</span><span class="p">(</span><span class="n">vertexShader</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shaderSource</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shaderSourceLen</span><span class="p">)</span>
+<span class="n">glCompileShader</span><span class="p">(</span><span class="n">vertexShader</span><span class="p">)</span>
+
+<span class="n">ProgramObject</span> <span class="o">=</span> <span class="n">glCreateProgram</span><span class="p">();</span>
+<span class="n">glAttachShader</span><span class="p">(</span><span class="n">ProgramObject</span><span class="p">,</span> <span class="n">vertexShaderObject</span><span class="p">);</span>
+<span class="n">glAttachShader</span><span class="p">(</span><span class="n">ProgramObject</span><span class="p">,</span> <span class="n">fragmentShaderObject</span><span class="p">);</span>
+
+<span class="n">glLinkProgram</span><span class="p">(</span><span class="n">ProgramObject</span><span class="p">);</span>
+</pre></div>
+
+<p>Same on GL++</p>
+
+<div class="highlight"><pre><span class="n">glpp</span><span class="o">::</span><span class="kt">shared_program_t</span> <span class="n">pprog</span><span class="p">;</span>
+
+<span class="n">pprog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">glpp</span><span class="o">::</span><span class="n">program</span><span class="p">();</span>
+<span class="n">pprog</span><span class="o">-&gt;</span><span class="n">attach_shader</span><span class="p">(</span>
+          <span class="n">glpp</span><span class="o">::</span><span class="n">open_shader_file</span><span class="p">(</span><span class="n">glpp</span><span class="o">::</span><span class="n">shader_type</span><span class="o">::</span><span class="n">VERTEX</span><span class="p">,</span> <span class="s">"shaderfile.vert"</span><span class="p">));</span>
+<span class="n">pprog</span><span class="o">-&gt;</span><span class="n">attach_shader</span><span class="p">(</span>
+          <span class="n">glpp</span><span class="o">::</span><span class="n">open_shader_file</span><span class="p">(</span><span class="n">glpp</span><span class="o">::</span><span class="n">shader_type</span><span class="o">::</span><span class="n">FRAGMENT</span><span class="p">,</span> <span class="s">"shaderfile.frag"</span><span class="p">));</span>
+<span class="n">pprog</span><span class="o">-&gt;</span><span class="n">build</span><span class="p">();</span>
+<span class="n">pprog</span><span class="o">-&gt;</span><span class="n">use</span><span class="p">();</span>
+</pre></div>
+
+<h1>
+<a name="build" class="anchor" href="#build"><span class="octicon octicon-link"></span></a>Build</h1>
+
+<p>GL++ uses <a href="http://www.cmake.org/">CMake</a> build system. To continue you must ensure that you have the cmake installed on your system, and all the needed libraries.</p>
+
+<p>To build the library you will need:</p>
+
+<ul>
+<li>OpenGL headers/libraries - usually provided by your graphics driver</li>
+<li><a href="http://freeglut.sourceforge.net">FreeGLUT</a></li>
+<li><a href="http://glew.sourceforge.net/">GLEW</a></li>
+</ul><p>To build the examples you will need also:</p>
+
+<ul>
+<li><a href="http://glm.g-truc.net/">GLM</a></li>
+<li><a href="http://freeimage.sourceforge.net/">FreeImage</a></li>
+<li><a href="http://www.boost.org">Boost</a></li>
+<li><a href="http://assimp.sourceforge.net">Assimp</a></li>
+</ul><p>It is preferred to build project in a sub-folder than doing it directly in tree.</p>
+
+<div class="highlight"><pre>mkdir build
+<span class="nb">cd </span>build
+cmake ..
+make
+</pre></div>
+
+<h1>
+<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h1>
+
+<p><a href="http://www.stack.nl/%7Edimitri/doxygen">Doxygen</a> is used for in-code documentation. You can build documentation files by simply running doxygen on the top folder where Doxyfile resides.</p>
+
+<h1>
+<a name="request-for-help" class="anchor" href="#request-for-help"><span class="octicon octicon-link"></span></a>Request For Help</h1>
+
+<p>OpenGL has a big API, with a lot of history and this is reflected in many domains. Studing the API and trying to find the best C++ representation requires a lot of effort. Any person who can help on this procedure can be useful for this project. Even jannitoring is also welcome.</p>
+
+<p>Please <a href="https://github.com/sque/glpp">contact us</a> if you want to contribute.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
