@@ -153,12 +153,26 @@ namespace glpp {
 	 */
 
 	/**
-	 * @page exclusive_glpp_api Function depends on using only GLPP API
-	 * Some functions of the GLPP API to work properly, depend on the fact that there
-	 * is no direct use of OpenGL API.
+	 * @mainpage
+	 * GL++ (glpp)
+	 * ===========
 	 *
-	 * The functions that are marked like this, usually have more info about which
-	 * functions of the GLPP API must not be bypassed by using direct OpenGL API.
+	 * OpenGL C++ Wrapper provides a C++ interface for the OpenGL API. The wrapper tries to expose all the logical objects of OpenGL standard to C++ native objects. This is not a graphics library, thus you will not find any assets manipulation or math functionality. However the library is designed to be easily coupled with an external math library like [glm](http://glm.g-truc.net/) or an assets manipulation library like [assimp](http://assimp.sourceforge.net/).
+	 *
+	 * The major keypoints of GL++ API are:
+	 * * Do not introduce new semantics.
+	 * * Do not hide steps, by creating all-in-one functions.
+	 * * Try to use common names with OpenGL C API to avoid confusion.
+	 * * Use C++ language to represent OOP semantics (e.g. [OpenGL objects](http://www.opengl.org/wiki/OpenGL_Object) )
+	 */
+
+	/**
+	 * @page exclusive_glpp_api Functions that depend on exclusive use of glpp API
+	 * Some functions of the glpp API depend on the fact that there is no direct
+	 * use of OpenGL C API.
+	 *
+	 * These functions are marked like this, and have more info about which subset
+	 * of the OpenGL C API should not be used at the same time.
 	 */
 }
 
