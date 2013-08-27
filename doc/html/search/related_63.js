@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['context',['context',['../structglpp_1_1blend__unit.html#ac78d499d6bdacfe4cc1f67b4ce865513',1,'glpp::blend_unit::context()'],['../structglpp_1_1capabilities__unit.html#ac78d499d6bdacfe4cc1f67b4ce865513',1,'glpp::capabilities_unit::context()'],['../structglpp_1_1depth__test__unit.html#ac78d499d6bdacfe4cc1f67b4ce865513',1,'glpp::depth_test_unit::context()'],['../structglpp_1_1face__cull__unit.html#ac78d499d6bdacfe4cc1f67b4ce865513',1,'glpp::face_cull_unit::context()'],['../structglpp_1_1logicop__unit.html#ac78d499d6bdacfe4cc1f67b4ce865513',1,'glpp::logicop_unit::context()'],['../structglpp_1_1scissor__test__unit.html#ac78d499d6bdacfe4cc1f67b4ce865513',1,'glpp::scissor_test_unit::context()'],['../structglpp_1_1stencil__test__unit.html#ac78d499d6bdacfe4cc1f67b4ce865513',1,'glpp::stencil_test_unit::context()']]]
+];
