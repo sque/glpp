@@ -87,5 +87,5 @@ Request For Help
 
 OpenGL has a big API, with a lot of history and this is reflected in many domains. Studing the API and trying to find the best C++ representation requires a lot of effort. Any person who can help on this procedure can be useful for this project. Even jannitoring is also welcome.
 
-Please [contact us](https://github.com/sque/glpp) if you want to contribute.
+Please [contact me](https://github.com/sque/glpp) if you want to contribute.
 
