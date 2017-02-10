@@ -2,7 +2,7 @@ add_executable(glpp_example_triangle main.cpp)
 target_link_libraries (glpp_example_triangle
     examples_common
     glpp
-    ${OPENGL_gl_LIBRARY}
+    ${OPENGL_LIBRARIES}
     ${GLEW_LIBRARY}
     ${GLUT_glut_LIBRARY}
 )

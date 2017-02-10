@@ -7,8 +7,7 @@ if (ASSIMP_FOUND AND Boost_FOUND AND FREEIMAGE_FOUND AND GLM_FOUND)
 
     add_subdirectory(common)
     add_subdirectory(resources)
-    
-    add_subdirectory(lighting_phong)
+#    add_subdirectory(lighting_phong)
     add_subdirectory(texture)
     add_subdirectory(rtt)
     add_subdirectory(triangle)

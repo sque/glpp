@@ -15,7 +15,7 @@ set(examples_common_SRCS
 add_library(examples_common ${examples_common_SRCS})
 target_link_libraries(examples_common
     glpp
-    ${OPENGL_gl_LIBRARY}
+    ${OPENGL_LIBRARIES}
     ${ASSIMP_LIBRARY}
     ${FREEIMAGEPLUS_LIBRARY}
 )

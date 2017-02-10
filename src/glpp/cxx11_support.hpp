@@ -40,7 +40,7 @@ namespace glpp{
 	};
 };
 
-// TYpe safe enum classes
+// Type safe enum classes
 #define GLPP_START_SAFE_ENUM(name) \
 	enum class name {
 
